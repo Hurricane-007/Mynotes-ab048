@@ -1,4 +1,4 @@
-import 'package:mynotes/VerifyEmail.dart';
+
 
 const loginRoute = '/login/';
 const registerRoute = '/registerview/';
