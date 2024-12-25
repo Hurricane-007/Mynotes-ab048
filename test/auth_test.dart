@@ -83,7 +83,6 @@ class MockAuthProvider implements AuthProvider{
      const user = AuthUser(isEmailVerified: false);
      _user = user;
      return Future.value(user);
-      
   }
 
   @override
