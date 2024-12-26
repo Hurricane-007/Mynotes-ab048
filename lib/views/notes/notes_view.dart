@@ -32,7 +32,7 @@ String get userEmail => AuthService.firebase().currentUser!.email!;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Notes'),
-        actions: [
+        actions: [ 
           IconButton(onPressed: () {
             Navigator.of(context).pushNamed(newNoteRoute);
           }, icon: const Icon(Icons.add)),
@@ -66,7 +66,9 @@ String get userEmail => AuthService.firebase().currentUser!.email!;
             return StreamBuilder(stream: _notesService.allNotes,
              builder:(context,snapshot){
                 switch(snapshot.connectionState){
+
                   case ConnectionState.waiting:
+                  case ConnectionState.done:
                     return const Text('Waiting for all notes....');
                   default:
                    return const CircularProgressIndicator();
