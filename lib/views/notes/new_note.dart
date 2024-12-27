@@ -67,6 +67,7 @@ class _NewNoteViewState extends State<NewNoteView> {
       await _notesService.updateNote(note: note, text: text);
     }
    }
+   
 @override
   void dispose() {
     _deleteNodeIfTextIsEmpty();
@@ -74,6 +75,8 @@ class _NewNoteViewState extends State<NewNoteView> {
     _textController.dispose();
     super.dispose();
   }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
