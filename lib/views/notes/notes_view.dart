@@ -31,7 +31,7 @@ String get userEmail => AuthService.firebase().currentUser!.email!;
         title: const Text('Your Notes'),
         actions: [ 
           IconButton(onPressed: () {
-            Navigator.of(context).pushNamed(newNoteRoute);
+            Navigator.of(context).pushNamed(createOrUpdateNoteRoute);
           }, icon: const Icon(Icons.add)),
           //popup
           PopupMenuButton<MenuAction>(onSelected: (value) async{
@@ -40,7 +40,7 @@ String get userEmail => AuthService.firebase().currentUser!.email!;
               case MenuAction.logout:
                final shouldLogout = await showLogOutDialog(context);
                if(shouldLogout){
-                await AuthService.firebase().logOut;
+                await AuthService.firebase().logOut; 
                 Navigator.of(context).pushNamedAndRemoveUntil(loginRoute, (route) => false,
                 );
                }
@@ -70,6 +70,10 @@ String get userEmail => AuthService.firebase().currentUser!.email!;
                      onDeleteNotes: (note) async{
                         await _notesService.deleteNote(id: note.id);
                      },
+                     onTap: (note){
+                      Navigator.of(context).pushNamed(createOrUpdateNoteRoute , 
+                      arguments:note);
+                     },
                      );
                     
                   }else{
@@ -82,8 +86,7 @@ String get userEmail => AuthService.firebase().currentUser!.email!;
             default:
             return const CircularProgressIndicator();
         }
-        
-
+    
       }),
     );
   }
