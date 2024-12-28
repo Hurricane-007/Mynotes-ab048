@@ -19,11 +19,11 @@ void main() {
       ),
       home: const HomePage(),
       routes: {
-        notesRoute:(context) =>const NotesView(),
         loginRoute:(context) => const LoginView(),
         registerRoute:(context) => const Registerview(),
         verifyEmailRoute: (context) => const VerifyEmailView(),
         createOrUpdateNoteRoute: (context) => const CreateUpdateNoteView(),
+        notesRoute:(context) =>const NotesView(),
       },
     ));
 }
@@ -49,9 +49,7 @@ class HomePage extends StatelessWidget {
              }else{
                     return const LoginView();
              }
-             
-            
-             
+
         default:
          return const CircularProgressIndicator();
             }
