@@ -6,10 +6,10 @@ Future<bool> showLogOutDialog(BuildContext context){
   return showGenericDialog(
     context: context, 
     title: 'Log out', 
-    content: 'Are you sure You want to logout',
+    content: 'Are you sure you want to logout',
      optionsBuilder: () =>{
       'cancel':false,
-      'Log out': true,
+      'log out': true,
      }
      ).then((value) => value ?? false,);
 }

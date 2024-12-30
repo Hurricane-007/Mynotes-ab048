@@ -48,9 +48,8 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
     _textController.addListener(_textControllerListener);
   }
 
-  // Future<DatabaseNote> createOrGetExistingNote(BuildContext context) async{
   Future<CloudNote> createOrGetExistingNote(BuildContext context) async {
-    // final widgetNote = context.getArgument<DatabaseNote>();
+  
     final widgetNote = context.getArgument<CloudNote>();
 
     if (widgetNote != null) {
@@ -64,9 +63,7 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
       return existingNote;
     }
     final currentUser = AuthService.firebase().currentUser!;
-    // final email = currentUser.email;
-    // final owner = await _notesService.getUser(email: email);
-    // final newNote = await _notesService.createNote(owner: owner);
+
     final userId = currentUser.id;
     final newNote = await _notesService.createNewNote(ownerUserId: userId);
     _note = newNote;
@@ -76,7 +73,6 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
   void _deleteNodeIfTextIsEmpty() {
     final note = _note;
     if (_textController.text.isEmpty && note != null) {
-      // _notesService.deleteNote(id: note.id);
       _notesService.deleteNote(documentId: note.documentId);
     }
   }
@@ -85,7 +81,6 @@ class _CreateUpdateNoteViewState extends State<CreateUpdateNoteView> {
     final note = _note;
     final text = _textController.text;
     if (note != null && text.isNotEmpty) {
-      // await _notesService.updateNote(note: note, text: text);
       await _notesService.updateNote(
         documentId: note.documentId,
         text: text,
